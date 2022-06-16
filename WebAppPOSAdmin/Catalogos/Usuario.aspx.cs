@@ -10,6 +10,7 @@ using WebAppPOSAdmin.Repository.Repositorios;
 
 using WebAppPOSAdmin.Recursos;
 using WebAppPOSAdmin.ListBoxExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Catalogos
 {

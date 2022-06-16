@@ -3,6 +3,7 @@ using System.Web.UI;
 
 using WebAppPOSAdmin.Repository.Repositorios;
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Almacen
 {

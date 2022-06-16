@@ -8,6 +8,7 @@ using WebAppPOSAdmin.Repository.Entidad;
 using WebAppPOSAdmin.Repository.Clases;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Catalogos
 {

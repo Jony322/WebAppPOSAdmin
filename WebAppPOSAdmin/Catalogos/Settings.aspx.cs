@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.UI;
 
 using WebAppPOSAdmin.Repository.Entidad;
+using NLog;
 
 namespace WebAppPOSAdmin.Catalogos
 {
