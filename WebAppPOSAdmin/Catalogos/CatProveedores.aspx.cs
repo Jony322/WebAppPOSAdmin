@@ -13,6 +13,12 @@ namespace WebAppPOSAdmin.Catalogos
 {
     public partial class CatProveedores : System.Web.UI.Page
     {
+
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         private enum operations
         {
             CREATE,
@@ -46,6 +52,8 @@ namespace WebAppPOSAdmin.Catalogos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: CatProveedores " + "Acción: Page_Load " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -58,6 +66,8 @@ namespace WebAppPOSAdmin.Catalogos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: CatProveedores " + "Acción: getMunicipios " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -85,6 +95,8 @@ namespace WebAppPOSAdmin.Catalogos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: CatProveedores " + "Acción: llenarCampos " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -134,6 +146,8 @@ namespace WebAppPOSAdmin.Catalogos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: CatProveedores " + "Acción: setItem " + ex.Message);
+                loggerdb.Error(ex);
                 throw ex;
             }
         }
@@ -155,6 +169,8 @@ namespace WebAppPOSAdmin.Catalogos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: CatProveedores " + "Acción: btnGuardar_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -167,6 +183,8 @@ namespace WebAppPOSAdmin.Catalogos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: CatProveedores " + "Acción: ddlEntidades_SelectedIndexChanged " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -191,6 +209,8 @@ namespace WebAppPOSAdmin.Catalogos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: CatProveedores " + "Acción: gvProveedores_RowCommand " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"MyMessageBox('PROVEEDORES','ERROR: {ex.Message}','error')", addScriptTags: true);
             }
         }
@@ -230,6 +250,8 @@ namespace WebAppPOSAdmin.Catalogos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: CatProveedores " + "Acción: loadResultsFind " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"MyMessageBox('Artículo asociado','ERROR: {ex.Message}','error')", addScriptTags: true);
             }
         }
