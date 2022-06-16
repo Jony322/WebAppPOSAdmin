@@ -4,11 +4,17 @@ using System.Web.UI.WebControls;
 using System.IO;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Almacen
 {
     public partial class frmInventario : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         private string directorio = "";
 
         private string nombre = "";
@@ -38,6 +44,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmInventario " + "Acción: rbEstado_SelectedIndexChanged " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -57,6 +65,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmInventario " + "Acción: eliminarReporte " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -90,6 +100,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmInventario " + "Acción: btnVer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
