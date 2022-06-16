@@ -15,12 +15,18 @@ using WebAppPOSAdmin.Security.SeguridadSession;
 using WebAppPOSAdmin.DropDownListExtender;
 using WebAppPOSAdmin.Funcionalidades;
 using WebAppPOSAdmin.Recursos;
+using NLog;
 
 namespace WebAppPOSAdmin.Almacen
 {
     public partial class frmEntrada : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+		#region  logger
+		private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+		private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+		#endregion
+
+		protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
@@ -58,6 +64,8 @@ namespace WebAppPOSAdmin.Almacen
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmEntrada " + "Acción: cargarDropInicial " + ex.Message);
+				loggerdb.Error(ex);
 				ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
 			}
 		}
@@ -71,6 +79,8 @@ namespace WebAppPOSAdmin.Almacen
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmEntrada " + "Acción: BindDataGrid " + ex.Message);
+				loggerdb.Error(ex);
 				ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
 			}
 		}
@@ -91,6 +101,8 @@ namespace WebAppPOSAdmin.Almacen
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmEntrada " + "Acción: setItem " + ex.Message);
+				loggerdb.Error(ex);
 				throw ex;
 			}
 		}
@@ -147,6 +159,8 @@ namespace WebAppPOSAdmin.Almacen
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmEntrada " + "Acción: btnBuscar_Click " + ex.Message);
+				loggerdb.Error(ex);
 				ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
 			}
 		}
@@ -232,6 +246,8 @@ namespace WebAppPOSAdmin.Almacen
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmEntrada " + "Acción: btnAnexar_Click " + ex.Message);
+				loggerdb.Error(ex);
 				ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
 			}
 		}
@@ -253,6 +269,8 @@ namespace WebAppPOSAdmin.Almacen
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmEntrada " + "Acción: btnGuardar_Click " + ex.Message);
+				loggerdb.Error(ex);
 				ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
 			}
 		}
@@ -292,6 +310,8 @@ namespace WebAppPOSAdmin.Almacen
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmEntrada " + "Acción: verificarExistenciTabla " + ex.Message);
+				loggerdb.Error(ex);
 				ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
 				return result;
 			}
@@ -328,6 +348,8 @@ namespace WebAppPOSAdmin.Almacen
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmEntrada " + "Acción: convertirSessionALista " + ex.Message);
+				loggerdb.Error(ex);
 				ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
 				return null;
 			}
@@ -346,6 +368,8 @@ namespace WebAppPOSAdmin.Almacen
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmEntrada " + "Acción: gvResultsFind_RowCommand " + ex.Message);
+				loggerdb.Error(ex);
 				ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
 			}
 		}
@@ -367,6 +391,8 @@ namespace WebAppPOSAdmin.Almacen
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmEntrada " + "Acción: btnFindItemDesc_Click " + ex.Message);
+				loggerdb.Error(ex);
 				ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
 			}
 		}
