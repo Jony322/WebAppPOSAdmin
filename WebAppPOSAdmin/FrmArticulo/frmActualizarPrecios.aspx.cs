@@ -13,11 +13,17 @@ using WebAppPOSAdmin.Repository.Scripts;
 using WebAppPOSAdmin.DropDownListExtender;
 using WebAppPOSAdmin.Funcionalidades;
 using WebAppPOSAdmin.Common;
+using NLog;
 
 namespace WebAppPOSAdmin.FrmArticulo
 {
     public partial class frmActualizarPrecios : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         private enum operations
         {
             UpdatePrices,
@@ -44,6 +50,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: llenarDropIniciales " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -58,6 +66,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: gvArticulos_RowEditing " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -72,6 +82,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: gvArticulos_RowCancelingEdit " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -96,6 +108,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: gvArticulos_RowUpdating " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -134,6 +148,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: ActualizarLista " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -151,6 +167,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: btnBuscar_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -200,6 +218,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: btnActualizar_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -229,6 +249,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: btnLlamarSuspenciones_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -278,6 +300,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: actualizarPrecio " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -352,6 +376,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: btnSuspender_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -366,6 +392,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: btnNewItems_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -380,6 +408,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: btnAddItems_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -400,6 +430,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: frmActualizarPrecios " + "Acción: btnImprimirEtiqueta_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\");", addScriptTags: true);
             }
         }
