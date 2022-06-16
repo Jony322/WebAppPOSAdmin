@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -10,6 +11,11 @@ namespace WebAppPOSAdmin.Almacen
 {
     public partial class VisorEntradas : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -34,6 +40,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorEntradas " + "Acción: inicializarFechas " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
                 return result;
             }
@@ -49,6 +57,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorEntradas " + "Acción: LimpiarCampos " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -69,6 +79,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorEntradas " + "Acción: gvEntrada_RowCommand " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -81,6 +93,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorEntradas " + "Acción: btnVer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -103,6 +117,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorEntradas " + "Acción: consultarEntradas " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
