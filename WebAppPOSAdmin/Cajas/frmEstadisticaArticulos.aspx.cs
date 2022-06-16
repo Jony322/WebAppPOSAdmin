@@ -8,11 +8,17 @@ using WebAppPOSAdmin.Repository.Clases;
 using WebAppPOSAdmin.Repository.Scripts;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Cajas
 {
     public partial class frmEstadisticaArticulos : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -30,6 +36,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: validarFechas " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
                 return false;
             }
@@ -45,6 +53,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: cargaDropInicial " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -57,6 +67,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: llenarDropCategoria " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -69,6 +81,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: llenarDropSubCategoria " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -81,6 +95,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: llenarDropLinea " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -95,6 +111,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: ddlCategoria_SelectedIndexChanged " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -108,6 +126,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: ddlSubCategoria_SelectedIndexChanged " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -123,6 +143,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: ddlDepartamento_SelectedIndexChanged " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -135,6 +157,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: btnVer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -168,6 +192,8 @@ namespace WebAppPOSAdmin.Cajas
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: btnShowStaticAcum_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}')", addScriptTags: true);
             }
         }
@@ -194,6 +220,8 @@ namespace WebAppPOSAdmin.Cajas
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: btnEstadisticaMes_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}')", addScriptTags: true);
             }
         }
@@ -220,6 +248,8 @@ namespace WebAppPOSAdmin.Cajas
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: btnEstadisticaDiaria_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}')", addScriptTags: true);
             }
         }
@@ -235,6 +265,8 @@ namespace WebAppPOSAdmin.Cajas
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: frmEstadisticasArticulos " + "Acción: btnPrintReport_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\")", addScriptTags: true);
             }
         }
