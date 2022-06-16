@@ -10,11 +10,16 @@ using WebAppPOSAdmin.Repository.Entidad;
 using WebAppPOSAdmin.Repository.Repositorios;
 
 using WebAppPOSAdmin.Common;
+using NLog;
 
 namespace WebAppPOSAdmin.FrmArticulo
 {
     public partial class frmEtiquetas : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,6 +41,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEtiquetas " + "Acción: btnAdherible_Click " + ex.Message);
+                loggerdb.Error(ex);
                 string s = $"<script>alert('ERROR: {ex.Message}')</script>";
                 base.Response.Write(s);
             }
@@ -52,6 +59,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEtiquetas " + "Acción: btnAnaquel_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -67,6 +76,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEtiquetas " + "Acción: btnLimpiar_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -96,6 +107,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEtiquetas " + "Acción: btnBuscar_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -123,6 +136,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEtiquetas " + "Acción: btnVisible_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -186,6 +201,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmEtiquetas " + "Acción: addItemToListToPrinter " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
