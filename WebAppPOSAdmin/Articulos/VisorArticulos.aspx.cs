@@ -12,11 +12,17 @@ using WebAppPOSAdmin.Repository.Entidad;
 using WebAppPOSAdmin.Repository.Extenciones;
 
 using WebAppPOSAdmin.Funcionalidades;
+using NLog;
 
 namespace WebAppPOSAdmin.Articulos
 {
     public partial class VisorArticulos : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!base.IsPostBack)
@@ -41,6 +47,8 @@ namespace WebAppPOSAdmin.Articulos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorArticulos " + "Acción: cargarDepartamentoPrincipal " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -92,6 +100,8 @@ namespace WebAppPOSAdmin.Articulos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorArticulos " + "Acción: llenarNodos " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -108,6 +118,8 @@ namespace WebAppPOSAdmin.Articulos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorArticulos " + "Acción: getNodoById " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
                 return null;
             }
@@ -123,6 +135,8 @@ namespace WebAppPOSAdmin.Articulos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorArticulos " + "Acción: treeViewArticulos_TreeNodePopulate " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -173,6 +187,8 @@ namespace WebAppPOSAdmin.Articulos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorArticulos " + "Acción: btnExportarExcel_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -200,6 +216,8 @@ namespace WebAppPOSAdmin.Articulos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorArticulos " + "Acción: llenarGridArticulos " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -214,11 +232,15 @@ namespace WebAppPOSAdmin.Articulos
                 }
                 catch (Exception ex)
                 {
+                    Log.Error(ex, "Excepción Generada en: VisorArticulos " + "Acción: treeViewArticulos_SelectedNodeChanged " + ex.Message);
+                    loggerdb.Error(ex);
                     _ = ex.Message;
                 }
             }
             catch (Exception ex2)
             {
+                Log.Error(ex2, "Excepción Generada en: VisorArticulos " + "Acción: treeViewArticulos_SelectedNodeChanged Anidada " + ex2.Message);
+                loggerdb.Error(ex2);
                 _ = ex2.Message;
             }
         }
