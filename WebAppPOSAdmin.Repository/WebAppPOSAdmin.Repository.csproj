@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6501D54F-6D16-432C-825E-1D95961C3FE8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebAppPOSAdmin.Repository</RootNamespace>
+    <AssemblyName>WebAppPOSAdmin.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clases\ArticuloCtrl.cs" />
+    <Compile Include="Clases\Clasificacion.cs" />
+    <Compile Include="Clases\clasificador.cs" />
+    <Compile Include="Clases\Clientes.cs" />
+    <Compile Include="Clases\Compras.cs" />
+    <Compile Include="Clases\Empresas.cs" />
+    <Compile Include="Clases\MySettings.cs" />
+    <Compile Include="Clases\OfferItems.cs" />
+    <Compile Include="Clases\Permisos.cs" />
+    <Compile Include="Clases\Provedores.cs" />
+    <Compile Include="Clases\Statistics.cs" />
+    <Compile Include="Clases\Usuarios.cs" />
+    <Compile Include="Entidad\dcContextoSuPlaza.cs">
+      <DependentUpon>dcContextoSuPlaza.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\dcContextoSuPlaza.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dcContextoSuPlaza.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\facturacion.cs" />
+    <Compile Include="Extenciones\AlmacenExtended.cs" />
+    <Compile Include="Extenciones\ArticuloAnexoExtended.cs" />
+    <Compile Include="Extenciones\ArticuloExtended.cs" />
+    <Compile Include="Extenciones\BackOrderExtended.cs" />
+    <Compile Include="Extenciones\CapturaInventarioExtended.cs" />
+    <Compile Include="Extenciones\CompraArticuloExtended.cs" />
+    <Compile Include="Extenciones\CompraExtended.cs" />
+    <Compile Include="Extenciones\CompraRelacionExtended.cs" />
+    <Compile Include="Extenciones\ComprasPorPedidoExtended.cs" />
+    <Compile Include="Extenciones\ConcentradoOrderExtended.cs" />
+    <Compile Include="Extenciones\kitArticuloExtended.cs" />
+    <Compile Include="Extenciones\OfertaArticuloExtended.cs" />
+    <Compile Include="Extenciones\OrderExtended.cs" />
+    <Compile Include="Extenciones\PedidoArticulosExtended.cs" />
+    <Compile Include="Extenciones\PedidoCapturaPendiente.cs" />
+    <Compile Include="Extenciones\PedidoExtended.cs" />
+    <Compile Include="Extenciones\PedidosSuspendidoExtended.cs" />
+    <Compile Include="Extenciones\RelacionVentaExtended.cs" />
+    <Compile Include="Extenciones\TicketsFactura.cs" />
+    <Compile Include="Extenciones\VentaArticuloExtended.cs" />
+    <Compile Include="Extenciones\VentaCanceladaExtended.cs" />
+    <Compile Include="Extenciones\VentaDevolucionExtended.cs" />
+    <Compile Include="Extenciones\VentaMovimientoExtended.cs" />
+    <Compile Include="Extenciones\VentaRelacionExtended.cs" />
+    <Compile Include="Extenciones\VentaSuspendidaExtended.cs" />
+    <Compile Include="Extenciones\VisorArticuloExtended.cs" />
+    <Compile Include="Extenciones\VisorOfertasExtended.cs" />
+    <Compile Include="Infraestructura\IAlmacen.cs" />
+    <Compile Include="Infraestructura\IArticulos.cs" />
+    <Compile Include="Infraestructura\ICajas.cs" />
+    <Compile Include="Infraestructura\ICliente.cs" />
+    <Compile Include="Infraestructura\ICompras.cs" />
+    <Compile Include="Infraestructura\IDepartamentos.cs" />
+    <Compile Include="Infraestructura\IDropDownListGeneric.cs" />
+    <Compile Include="Infraestructura\IEmpleados.cs" />
+    <Compile Include="Infraestructura\IEmpresa.cs" />
+    <Compile Include="Infraestructura\IGeneralidades.cs" />
+    <Compile Include="Infraestructura\IGenerico.cs" />
+    <Compile Include="Infraestructura\ILogueo.cs" />
+    <Compile Include="Infraestructura\IOfertas.cs" />
+    <Compile Include="Infraestructura\IPedidos.cs" />
+    <Compile Include="Infraestructura\IPermisos.cs" />
+    <Compile Include="Infraestructura\IProveedores.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="RecursosObjects.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosObjects.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorios\RepositorioAlmacen.cs" />
+    <Compile Include="Repositorios\RepositorioArticulos.cs" />
+    <Compile Include="Repositorios\RepositorioCajas.cs" />
+    <Compile Include="Repositorios\RepositorioClientes.cs" />
+    <Compile Include="Repositorios\RepositorioCompras.cs" />
+    <Compile Include="Repositorios\RepositorioCtrlErrores.cs" />
+    <Compile Include="Repositorios\RepositorioDepartamentos.cs" />
+    <Compile Include="Repositorios\RepositorioDropDownList.cs" />
+    <Compile Include="Repositorios\RepositorioEmpleado.cs" />
+    <Compile Include="Repositorios\RepositorioEmpresa.cs" />
+    <Compile Include="Repositorios\RepositorioGeneralidades.cs" />
+    <Compile Include="Repositorios\RepositorioLogueo.cs" />
+    <Compile Include="Repositorios\RepositorioOfertas.cs" />
+    <Compile Include="Repositorios\RepositorioPedidos.cs" />
+    <Compile Include="Repositorios\RepositorioPermisos.cs" />
+    <Compile Include="Repositorios\RepositorioProveedores.cs" />
+    <Compile Include="Scripts\POSAdmin.cs" />
+    <Compile Include="Scripts\Procedures.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Entidad\dcContextoSuPlaza.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dcContextoSuPlaza.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entidad\dcContextoSuPlaza.dbml.layout">
+      <DependentUpon>dcContextoSuPlaza.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="RecursosObjects.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosObjects.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

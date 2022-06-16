@@ -1,0 +1,82 @@
+﻿/*
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+*/
+
+body {
+    font-size: 12px;
+}
+
+.Roboto {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form{
+    background:#eee;
+   
+}
+
+.col-no-padding [class*='col-md'] {padding:0;}
+.padding-right{padding-left:10px;}
+.panel-dinamico
+{
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23);
+      /*top:10px;*/
+      background:#fff;
+      overflow:hidden;
+      margin-bottom:20px;
+      border-radius:3px;
+      padding-bottom:0px;
+}
+
+.quitar-margin[class*="panel panel-"]{margin-bottom:-20px;}
+.quitar-padding[class*="col-md-"]{padding-right: 0px; padding-left: 0px;}
+
+.esconder {
+    display:none;
+}
+
+    :focus, :active { outline:0; }
+
+        #accordion { 
+            width:0px auto; 
+            margin:0 auto; 
+            font:normal normal 13px sans-serif; 
+            color:#555; 
+        }
+        
+        #accordion h3 {
+            padding:5px; 
+            -webkit-border-radius:3px; 
+            border-radius:3px;
+            -moz-box-shadow:0 1px 4px #CCC; 
+            -webkit-box-shadow:0 1px 4px #CCC; 
+            box-shadow:0 1px 4px #CCC; 
+            margin:3px 0; 
+            cursor:pointer;
+        }
+
+        /*#accordion div {
+            margin:0 0 0 10px; 
+            padding:90px; 
+            border:solid 1px #F6F6F6; 
+            height:auto;*/
+
+
+.modal-contenedor{width:100%;height:100%;position:absolute;display:none; background-image:url(../Images/bg-modal.png); z-index:2000}
+
+.error{background:#d2322d; color:#fff;}
+.correcto{background:#5edb68; color:#fff}
+.info {background:#0d86a7; color:#fff}
+
+.esconder {display:none;}
+
+.popcontrol
+{ 
+visibility:hidden;
+position:absolute;
+border-style:solid;
+border-width:0.5px;
+background-color:#eee;
+z-index:100;
+min-width:100px;
+}

@@ -1,0 +1,17 @@
+*/**/bin/Debug
+*/**/bin/Release
+*/**/obj/Debug
+*/**/obj/Release
+
+.vs/
+packages/
+
+WebAppPOSAdmin/bin/
+WebAppPOSAdmin.Security/bin/
+WebAppPOSAdmin.Repository/bin/
+WebAppPOSAdmin.Util/bin/
+
+WebAppPOSAdmin/obj/
+WebAppPOSAdmin.Security/obj/
+WebAppPOSAdmin.Repository/obj/
+WebAppPOSAdmin.Util/obj/

@@ -1,0 +1,238 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebAppPOSAdmin.SiteMaster" %>
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> :: Su Plaza de Actopan, S.A. de C.V.</title>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <%--<webopt:BundleReference runat="server" Path="~/Content/css" />--%>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <link rel="stylesheet" href="/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Content/Styles.css" />
+    <link rel="stylesheet" href="/Content/AutoComplete.css">
+
+    <!--script src="/Scripts/jquery-1.9.1.js"></script>
+    <script src="/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="/Scripts/jquery-1.12.0.js"></script-->
+    <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/Acordeon.js"></script>
+    <script src="/Scripts/MainMensajes.js"></script>
+    <script src="/Scripts/controlador-gridview.js"></script>
+    <script src="/Scripts/control-textbox.js"></script>
+    <script src="/Scripts/mensaje-cliente.js"></script>
+    <script src="/Scripts/SuPlazaFunctions.js"></script>
+    <script src="/Scripts/grid-editable.js"></script>
+    <script src="/Scripts/pdfobject.min.js"></script>
+
+
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).keypress(function (e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        $(document).ready(function () {
+            setInterval(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Resources.aspx/KeepActiveSession",
+                    data: {},
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    success: VerifySessionState,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus + ": " + XMLHttpRequest.responseText);
+                    }
+                });
+            }, 60000);
+        });
+
+        function VerifySessionState(result) {
+            if (result.d) $("#EstadoSession").text("activo");
+            else $("#EstadoSession").text("expiro");
+        }
+    </script>
+</head>
+<body class="form Roboto">
+    
+    <form runat="server" autocomplete="off">   
+        <asp:ScriptManager runat="server" EnableScriptGlobalization="True">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=272931&clcid=0x409 --%>
+                <%--Framework Scripts--%>
+
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="jquery.ui.combined" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Su Plaza</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catálogos<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">-- PRINCIPALES --</li>
+                                <li><a href="/Catalogos/CatDepartamentos.aspx">Clasificador de artículos</a></li>
+                                <li><a href="/Catalogos/CatArticulos.aspx">Artículos</a></li>
+                                <li><a href="/Catalogos/CatKitArticulo.aspx">KIT de artículos</a></li>
+                                <li><a href="/Catalogos/CatProveedores.aspx">Proveedores</a></li>
+                                <li><a href="/Catalogos/CatClientes.aspx">Clientes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artículos<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/FrmArticulo/frmActualizarPrecios.aspx">Cambios de precio</a></li>                                
+                                <li><a href="/FrmArticulo/OfertaArticulos.aspx">Registro de ofertas</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/Articulos/VisorArticulos.aspx">Visor de artículos</a></li>
+                                <li><a href="/FrmArticulo/Ofertas.aspx">Visor de ofertas</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Almacen<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Almacen/frmEntrada.aspx">Captura de entradas</a></li>
+                                <li><a href="/Almacen/frmSalidas.aspx">Captura de salidas</a></li>
+                                <li><a href="/Almacen/VisorEntradas.aspx">Visor de entradas</a></li>
+                                <li><a href="/Almacen/VisorSalidas.aspx">Visor de salidas</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventarios<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Almacen/frmFijarAlmacen.aspx">Fijar inventario</a></li>
+                                <li><a href="/Almacen/InventariosAbiertos.aspx">Inventarios abiertos</a></li>
+                                <li><a href="/Almacen/frmFormato.aspx">Formato de inventario</a></li>
+                                <li><a href="/Almacen/frmCapturaInventario.aspx">Capturar inventario</a></li>
+                                <li><a href="/Almacen/frmInventario.aspx">Inventario actual o f&iacute;sico</a></li>
+                                <li><a href="/Almacen/frmActualizar.aspx">Actualizar y cerrar</a></li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedidos<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Pedido/frmPedido.aspx">Captura de pedido</a></li>
+                                <li><a href="/Pedido/confirmacionpedidos.aspx">Pedidos pendientes</a></li>   
+                                <li><a href="/Pedido/frmPedidoAutorizado.aspx">Pedidos autorizados</a></li> 
+                                <li><a href="/Pedido/frmPedidoNoAutorizado.aspx">Pedidos NO autorizados</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compras<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Compra/ByOrder.aspx">Comprar por Pedido</a></li>
+                                <li><a href="/Compra/FreePurchase.aspx">Compras Libres</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cajas<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Cajas/frmCierreCajas.aspx">Cierres</a></li>    
+                                <li role="separator" class="divider"></li>   
+                                <li><a href="/Cajas/frmRelacion.aspx">Relación</a></li> 
+                                <li><a href="/Cajas/frmDevoluciones.aspx">Devoluciones</a></li> 
+                                <li><a href="/Cajas/frmVentasCanceladas.aspx">Ventas canceladas</a></li>
+                                <li><a href="/Cajas/frmVentasSuspendidas.aspx">Ventas suspendidas</a></li> 
+                                <li><a href="/Cajas/frmMovCaja.aspx">Movimientos</a></li>  
+                                <li role="separator" class="divider"></li>   
+                                <li><a href="/Cajas/frmEstadisticaArticulos.aspx">Estadística de artículos</a></li>  
+                            </ul>
+                        </li>
+                    </ul>
+                     <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Facturaci&oacute;n<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Facturacion/Facturar.aspx">Facturar</a></li>
+                                <!-- li><a href="/Facturacion/Consultar.aspx">Visor</a></li !-->
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/Facturacion/Settings.aspx">Configuraci&oacute;n</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utilerias<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">-- SEGURIDAD --</li>
+                                <li><a href="/Catalogos/CatPermisos.aspx">Permisos</a></li>
+                                <li><a href="/Catalogos/Usuario.aspx">Usuarios</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">-- CONFIGURACIÓN --</li>
+                                <li><a href="/Catalogos/CatEmpresas.aspx">Mi empresa</a></li>
+                                <li><a href="/Catalogos/CatImpresoras.aspx">Impresora de etiquetas</a></li>
+                                <li><a href="/Catalogos/Settings.aspx">Configuraciones</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">-- GENERACIÓN --</li>
+                                <li><a href="/Utilities/Basculas.aspx">Archivos para básculas</a></li>
+                                <li><a href="/FrmArticulo/frmEtiquetas.aspx">Etiquetas</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><asp:Button Text="Cerrar Sesión" CssClass="btn btn-link" ID="btnClose" runat="server" OnClick="btnClose_Click" /></li>   
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+        <div class="col-no-padding">
+            <section class="col-md-10 col-md-offset-1 col-xs-12 panel-dinamico">
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+            </section>
+        </div>
+        <div id="EstadoSession"></div>
+    </form>
+    </body>
+</html>
