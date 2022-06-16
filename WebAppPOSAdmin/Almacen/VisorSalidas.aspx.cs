@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using AjaxControlToolkit;
-
+using NLog;
 using WebAppPOSAdmin.Repository.Entidad;
 using WebAppPOSAdmin.Repository.Repositorios;
 
@@ -13,6 +13,11 @@ namespace WebAppPOSAdmin.Almacen
 {
     public partial class VisorSalidas : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         private SessionFormularios formulario = new SessionFormularios();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -43,6 +48,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorSalidas " + "Acción: consultarSalidas " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -60,6 +67,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorSalidas " + "Acción: validarFechas " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
                 return result;
             }
@@ -76,6 +85,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorSalidas " + "Acción: LimpiarCampos " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -105,6 +116,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: VisorSalidas " + "Acción: btnVer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
