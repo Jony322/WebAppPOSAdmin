@@ -5,11 +5,17 @@ using System.Web.UI;
 using WebAppPOSAdmin.Repository.Entidad;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Cajas
 {
     public partial class frmCierreCajas : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -29,6 +35,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmCierreCajas " + "Acción: cargarDropInicial " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -57,6 +65,8 @@ namespace WebAppPOSAdmin.Cajas
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: frmCierreCajas " + "Acción: btnVer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}')", addScriptTags: true);
             }
         }
