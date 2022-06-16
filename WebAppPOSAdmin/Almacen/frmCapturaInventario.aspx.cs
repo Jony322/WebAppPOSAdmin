@@ -60,6 +60,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmCapturaInventario " + "Acción: ddlProveedor_SelectedIndexChanged " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -76,6 +78,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmCapturaInventario " + "Acción: gvCaptura_RowDataBound " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -91,6 +95,8 @@ namespace WebAppPOSAdmin.Almacen
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: frmCapturaInventario " + "Acción: btnCreatePDF_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\")", addScriptTags: true);
             }
         }
