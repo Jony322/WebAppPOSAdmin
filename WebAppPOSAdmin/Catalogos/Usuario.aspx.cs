@@ -15,6 +15,11 @@ namespace WebAppPOSAdmin.Catalogos
 {
     public partial class Usuario : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         private enum operations
         {
             CREATE,
@@ -77,6 +82,8 @@ namespace WebAppPOSAdmin.Catalogos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: Usuario " + "Acción: llenarCampos " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -96,6 +103,8 @@ namespace WebAppPOSAdmin.Catalogos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: Usuario " + "Acción: llenarListas " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -203,6 +212,8 @@ namespace WebAppPOSAdmin.Catalogos
             catch (Exception ex)
             {
                 string arg = ex.Message.Replace("'", "");
+                Log.Error(ex, "Excepción Generada en: Usuario " + "Acción: btnGuardar_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{arg}\");", addScriptTags: true);
             }
         }
@@ -235,6 +246,8 @@ namespace WebAppPOSAdmin.Catalogos
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Usuario " + "Acción: btnMoverDerecha_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\");", addScriptTags: true);
             }
         }
@@ -255,6 +268,8 @@ namespace WebAppPOSAdmin.Catalogos
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Usuario " + "Acción: btnMoverTodoDerecha_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\");", addScriptTags: true);
             }
         }
@@ -287,6 +302,8 @@ namespace WebAppPOSAdmin.Catalogos
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Usuario " + "Acción: btnMoverIzquierda_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\");", addScriptTags: true);
             }
         }
@@ -307,6 +324,8 @@ namespace WebAppPOSAdmin.Catalogos
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Usuario " + "Acción: btnMoverTodoIzquierda_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\");", addScriptTags: true);
             }
         }
@@ -327,6 +346,8 @@ namespace WebAppPOSAdmin.Catalogos
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Usuario " + "Acción: rbtPermisos_SelectedIndexChanged " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\");", addScriptTags: true);
             }
         }
