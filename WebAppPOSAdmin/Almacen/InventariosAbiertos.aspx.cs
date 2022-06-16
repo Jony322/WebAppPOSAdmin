@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Linq;
 using System.Web.UI;
 
@@ -8,6 +9,12 @@ namespace WebAppPOSAdmin.Almacen
 {
     public partial class InventariosAbiertos : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -38,6 +45,8 @@ namespace WebAppPOSAdmin.Almacen
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: InventariosAbiertos " + "Acción: fillGridView " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
