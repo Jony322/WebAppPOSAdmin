@@ -8,11 +8,16 @@ using WebAppPOSAdmin.Repository.Entidad;
 using WebAppPOSAdmin.Repository.Extenciones;
 using WebAppPOSAdmin.Repository.Repositorios;
 using WebAppPOSAdmin.Repository.Infraestructura;
+using NLog;
 
 namespace WebAppPOSAdmin.Facturacion
 {
     public partial class Consultar : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!base.IsPostBack && !base.IsPostBack)
@@ -32,6 +37,8 @@ namespace WebAppPOSAdmin.Facturacion
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: Consultar " + "Acción: llenarSiguienteGrid " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -45,6 +52,8 @@ namespace WebAppPOSAdmin.Facturacion
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: Consultar " + "Acción: DataBindGrid " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -64,6 +73,8 @@ namespace WebAppPOSAdmin.Facturacion
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Consultar " + "Acción: btnVer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }
@@ -82,6 +93,8 @@ namespace WebAppPOSAdmin.Facturacion
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: Consultar " + "Acción: btnExportarPdf_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -96,6 +109,8 @@ namespace WebAppPOSAdmin.Facturacion
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: Consultar " + "Acción: btnExportarExcel_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -125,6 +140,8 @@ namespace WebAppPOSAdmin.Facturacion
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: Consultar " + "Acción: gvCancelaciones_RowCommand " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
