@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,6 +14,11 @@ namespace WebAppPOSAdmin.DocsXLS
 {
     public partial class CambioPrecios : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -111,6 +117,7 @@ namespace WebAppPOSAdmin.DocsXLS
                 }
                 catch
                 {
+
                 }
             }
         }
