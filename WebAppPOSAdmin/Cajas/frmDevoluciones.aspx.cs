@@ -9,11 +9,17 @@ using WebAppPOSAdmin.Repository.Extenciones;
 using WebAppPOSAdmin.Repository.Repositorios;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Cajas
 {
     public partial class frmDevoluciones : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         private Guid SaleID;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -54,11 +60,15 @@ namespace WebAppPOSAdmin.Cajas
                 catch (Exception ex)
                 {
                     string message = ex.Message;
+                    Log.Error(ex, "Excepción Generada en: frmDevoluciones " + "Acción: btnVer_Click " + ex.Message);
+                    loggerdb.Error(ex);
                     ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}')", addScriptTags: true);
                 }
             }
             catch (Exception ex2)
             {
+                Log.Error(ex2, "Excepción Generada en: frmDevoluciones " + "Acción: btnVer_Click " + ex2.Message);
+                loggerdb.Error(ex2);
                 _ = ex2.Message;
             }
         }
@@ -110,6 +120,8 @@ namespace WebAppPOSAdmin.Cajas
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: frmDevoluciones " + "Acción: getVentas " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\")", addScriptTags: true);
             }
         }
@@ -125,6 +137,8 @@ namespace WebAppPOSAdmin.Cajas
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: frmDevoluciones " + "Acción: btnPdf_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\")", addScriptTags: true);
             }
         }
@@ -156,6 +170,8 @@ namespace WebAppPOSAdmin.Cajas
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmDevoluciones " + "Acción: gvVentas_RowCommand " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
