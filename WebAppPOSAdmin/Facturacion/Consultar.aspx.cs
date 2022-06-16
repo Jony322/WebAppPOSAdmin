@@ -18,6 +18,7 @@ namespace WebAppPOSAdmin.Facturacion
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
         #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!base.IsPostBack && !base.IsPostBack)

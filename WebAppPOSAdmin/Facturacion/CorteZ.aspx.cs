@@ -4,11 +4,17 @@ using System.Linq;
 using System.Net;
 
 using WebAppPOSAdmin.Repository.Entidad;
+using NLog;
 
 namespace WebAppPOSAdmin.Facturacion
 {
     public partial class CorteZ : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         public enum Aline
         {
             toLeft,
@@ -41,6 +47,8 @@ namespace WebAppPOSAdmin.Facturacion
             }
             catch
             {
+                Log.Error(string.Empty, "Excepción Generada en: CorteZ " + "Acción: showInvoice " + "No controlada por el software");
+                loggerdb.Error("Excepción Generada en: CorteZ, No controlada");
                 base.Response.Write("<h1>Factura a&uacute;n no generada.<br />En 10 segundos se recargar&aacute; autom&aacute;ticamente &eacute;sta p&aacute;gina. </h1>");
             }
         }

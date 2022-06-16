@@ -9,7 +9,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <uc1:notificaciones runat="server" ID="notificaciones" />
-
     <script>
         var iva = parseFloat(<%= decimal.Parse(Session["iva"].ToString()) %>);
         var statusCRUD = "<%= Session["status"] %>";

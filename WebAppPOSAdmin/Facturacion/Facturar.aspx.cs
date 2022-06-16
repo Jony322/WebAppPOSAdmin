@@ -11,11 +11,17 @@ using WebAppPOSAdmin.Repository.Entidad;
 using WebAppPOSAdmin.Repository.Extenciones;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Facturacion
 {
     public partial class Facturar : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -70,6 +76,8 @@ namespace WebAppPOSAdmin.Facturacion
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Facturar " + "Acción: ibtFindItem_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }
@@ -96,6 +104,8 @@ namespace WebAppPOSAdmin.Facturacion
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Facturar " + "Acción: btnRecovery_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }
@@ -124,6 +134,8 @@ namespace WebAppPOSAdmin.Facturacion
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Facturar " + "Acción: RecoveryClient " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
             finally
@@ -204,6 +216,8 @@ namespace WebAppPOSAdmin.Facturacion
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Facturar " + "Acción: btnAddTicket_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
             finally
@@ -247,6 +261,8 @@ namespace WebAppPOSAdmin.Facturacion
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Facturar " + "Acción: btnAddItemInvoice_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
             finally
@@ -344,6 +360,8 @@ namespace WebAppPOSAdmin.Facturacion
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Facturar " + "Acción: loadDetailInvoice " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\");", addScriptTags: true);
             }
             finally
@@ -398,6 +416,8 @@ namespace WebAppPOSAdmin.Facturacion
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Facturar " + "Acción: btnFacturar_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }
@@ -508,6 +528,8 @@ namespace WebAppPOSAdmin.Facturacion
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: Facturar " + "Acción: generateInvoice " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }

@@ -1,0 +1,80 @@
+[ERROR] 02:37:47.369:
+- WebAppPOSAdmin.Almacen.VisorEntradas.consultarEntradas (Line #120)
+- Excepción Generada en: VisorEntradas Acción: consultarEntradas No se encontraron Entradas
+ 
+[ERROR] 02:37:47.385:
+- WebAppPOSAdmin.Almacen.VisorEntradas.consultarEntradas (Line #121)
+- System.Exception: No se encontraron Entradas
+ 
+[ERROR] 02:41:15.684:
+- WebAppPOSAdmin.Almacen.InventariosAbiertos.fillGridView (Line #48)
+- Excepción Generada en: InventariosAbiertos Acción: fillGridView No hay inventarios abiertos.
+ 
+[ERROR] 02:41:15.692:
+- WebAppPOSAdmin.Almacen.InventariosAbiertos.fillGridView (Line #49)
+- System.Exception: No hay inventarios abiertos.
+ 
+[ERROR] 02:41:21.143:
+- WebAppPOSAdmin.Almacen.frmFormato.eliminarReporte (Line #49)
+- Excepción Generada en: frmFormatoAcción: eliminarReporte No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:41:21.143:
+- WebAppPOSAdmin.Almacen.frmFormato.eliminarReporte (Line #50)
+- System.IO.DirectoryNotFoundException: No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:41:34.957:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #68)
+- Excepción Generada en: frmInventario Acción: eliminarReporte No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:41:34.957:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #69)
+- System.IO.DirectoryNotFoundException: No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:41:37.008:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #68)
+- Excepción Generada en: frmInventario Acción: eliminarReporte No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:41:37.008:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #69)
+- System.IO.DirectoryNotFoundException: No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:41:40.553:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #68)
+- Excepción Generada en: frmInventario Acción: eliminarReporte No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:41:40.553:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #69)
+- System.IO.DirectoryNotFoundException: No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:42:09.425:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #68)
+- Excepción Generada en: frmInventario Acción: eliminarReporte No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:42:09.425:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #69)
+- System.IO.DirectoryNotFoundException: No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:42:11.041:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #68)
+- Excepción Generada en: frmInventario Acción: eliminarReporte No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:42:11.041:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #69)
+- System.IO.DirectoryNotFoundException: No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:42:14.271:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #68)
+- Excepción Generada en: frmInventario Acción: eliminarReporte No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:42:14.271:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #69)
+- System.IO.DirectoryNotFoundException: No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:42:20.012:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #68)
+- Excepción Generada en: frmInventario Acción: eliminarReporte No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
+[ERROR] 02:42:20.020:
+- WebAppPOSAdmin.Almacen.frmInventario.eliminarReporte (Line #69)
+- System.IO.DirectoryNotFoundException: No se puede encontrar una parte de la ruta de acceso 'D:\Proyectos 2021\Proyectos 2022\PosAdmin-master\PosAdmin-master\WebAppPOSAdmin\ReportesPdf'.
+ 
