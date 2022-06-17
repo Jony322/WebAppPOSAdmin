@@ -10,11 +10,17 @@ using WebAppPOSAdmin.Repository.Repositorios;
 using WebAppPOSAdmin.Repository.Scripts;
 
 using WebAppPOSAdmin.Common;
+using NLog;
 
 namespace WebAppPOSAdmin.FrmArticulo
 {
     public partial class Ofertas : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         private enum FilterBy
         {
             All,
@@ -133,6 +139,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: Ofertas " + "Acción: loadOffers " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"MyMessageBox('VISOR DE OFERTAS','ERROR: {ex.Message}','error')", addScriptTags: true);
             }
         }
@@ -223,6 +231,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: Ofertas " + "Acción: gvOferta_RowCommand " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -258,6 +268,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: Ofertas " + "Acción: gvDetailOferta_RowCommand " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
