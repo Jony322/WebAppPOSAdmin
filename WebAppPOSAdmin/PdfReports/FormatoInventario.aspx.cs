@@ -6,13 +6,17 @@ using System.Web.UI.WebControls;
 
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-
+using NLog;
 using WebAppPOSAdmin.Repository.Entidad;
 
 namespace WebAppPOSAdmin.PdfReports
 {
     public partial class FormatoInventario : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!base.IsPostBack && base.Request.QueryString["id"] != null)
@@ -110,6 +114,8 @@ namespace WebAppPOSAdmin.PdfReports
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: FormatoInventario " + "Acción: createPDF " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
