@@ -6,7 +6,7 @@ using System.Web;
 
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-
+using NLog;
 using WebAppPOSAdmin.Repository.Entidad;
 using WebAppPOSAdmin.Repository.Extenciones;
 
@@ -14,6 +14,10 @@ namespace WebAppPOSAdmin.PdfReports
 {
     public partial class BackOrder : System.Web.UI.Page
     {
+		#region  logger
+		private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+		private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+		#endregion
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!base.IsPostBack)
@@ -120,6 +124,8 @@ namespace WebAppPOSAdmin.PdfReports
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: BackOrder " + "Acción: createPDF " + ex.Message);
+				loggerdb.Error(ex);
 				base.Response.Write(ex.Message);
 			}
 		}
