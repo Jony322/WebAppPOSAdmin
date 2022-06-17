@@ -12,11 +12,16 @@ using WebAppPOSAdmin.Repository.Repositorios;
 
 using WebAppPOSAdmin.Funcionalidades;
 using WebAppPOSAdmin.Recursos;
+using NLog;
 
 namespace WebAppPOSAdmin.FrmArticulo
 {
     public partial class frmRelacionOfertas : System.Web.UI.Page
     {
+		#region  logger
+		private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+		private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+		#endregion
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!base.IsPostBack)
@@ -35,6 +40,8 @@ namespace WebAppPOSAdmin.FrmArticulo
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmRelacionOfertas " + "Acción: cargarNodoPrincipal " + ex.Message);
+				loggerdb.Error(ex);
 				_ = ex.Message;
 			}
 		}
@@ -59,6 +66,8 @@ namespace WebAppPOSAdmin.FrmArticulo
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmRelacionOfertas " + "Acción: llenarNodos " + ex.Message);
+				loggerdb.Error(ex);
 				_ = ex.Message;
 			}
 		}
@@ -72,6 +81,8 @@ namespace WebAppPOSAdmin.FrmArticulo
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmRelacionOfertas " + "Acción: treeViewOfertas_TreeNodePopulate " + ex.Message);
+				loggerdb.Error(ex);
 				_ = ex.Message;
 			}
 		}
@@ -88,6 +99,8 @@ namespace WebAppPOSAdmin.FrmArticulo
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmRelacionOfertas " + "Acción: cargarGridView " + ex.Message);
+				loggerdb.Error(ex);
 				_ = ex.Message;
 			}
 		}
@@ -101,6 +114,8 @@ namespace WebAppPOSAdmin.FrmArticulo
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmRelacionOfertas " + "Acción: treeViewOfertas_SelectedNodeChanged " + ex.Message);
+				loggerdb.Error(ex);
 				_ = ex.Message;
 			}
 		}
@@ -151,6 +166,8 @@ namespace WebAppPOSAdmin.FrmArticulo
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmRelacionOfertas " + "Acción: btnExportarExcel_Click " + ex.Message);
+				loggerdb.Error(ex);
 				_ = ex.Message;
 			}
 		}
@@ -168,6 +185,8 @@ namespace WebAppPOSAdmin.FrmArticulo
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmRelacionOfertas " + "Acción: gvOfertas_RowCommand " + ex.Message);
+				loggerdb.Error(ex);
 				_ = ex.Message;
 			}
 		}
@@ -180,6 +199,8 @@ namespace WebAppPOSAdmin.FrmArticulo
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmRelacionOfertas " + "Acción: eliminarArticulo " + ex.Message);
+				loggerdb.Error(ex);
 				_ = ex.Message;
 			}
 		}
@@ -199,6 +220,8 @@ namespace WebAppPOSAdmin.FrmArticulo
 			}
 			catch (Exception ex)
 			{
+				Log.Error(ex, "Excepción Generada en: frmRelacionOfertas " + "Acción: btnEliminarOferta_Click " + ex.Message);
+				loggerdb.Error(ex);
 				_ = ex.Message;
 			}
 		}
