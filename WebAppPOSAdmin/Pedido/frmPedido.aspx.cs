@@ -11,11 +11,17 @@ using WebAppPOSAdmin.Repository.Repositorios;
 using WebAppPOSAdmin.Repository.Scripts;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Pedido
 {
     public partial class frmPedido : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         private enum operations
         {
             NEW,
@@ -64,6 +70,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: cargaInicial " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -80,6 +88,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: validarDrop " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
                 return false;
             }
@@ -139,6 +149,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: recorrerGridInsertar " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -163,6 +175,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: recorrerGridActualizar " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -198,6 +212,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: llenarDatosSuspendidos " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -226,6 +242,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: setItem " + ex.Message);
+                loggerdb.Error(ex);
                 throw ex;
             }
         }
@@ -246,6 +264,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: setItemValue " + ex.Message);
+                loggerdb.Error(ex);
                 throw ex;
             }
         }
@@ -275,6 +295,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: showDetailOrder " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -296,6 +318,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: actualizarDatosSession " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -315,6 +339,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: btnVer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 string arg = ex.Message.Replace("'", " ");
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{arg}');", addScriptTags: true);
             }
@@ -350,6 +376,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: btnGuardar_Click " + ex.Message);
+                loggerdb.Error(ex);
                 string arg = ex.Message.Replace("'", " ");
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{arg}');", addScriptTags: true);
             }
@@ -373,6 +401,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: btnSuspender_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -398,6 +428,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: btnRecuperar_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -425,6 +457,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: gvPedidos_SelectedIndexChanged " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -442,6 +476,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: gvPedidos_RowDataBound " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -457,6 +493,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: gvPedidos_RowEditing " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -472,6 +510,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: gvPedidos_RowUpdating " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -484,6 +524,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: gvPedidos_RowCancelingEdit " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -506,6 +548,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: btnExportarPDF_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -523,6 +567,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: gvPedidos_RowCommand " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -643,6 +689,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedido " + "Acción: btnCalculate_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
