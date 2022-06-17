@@ -14,11 +14,16 @@ using WebAppPOSAdmin.Security.SeguridadSession;
 using WebAppPOSAdmin.Common;
 using WebAppPOSAdmin.DropDownListExtender;
 using WebAppPOSAdmin.Funcionalidades;
+using NLog;
 
 namespace WebAppPOSAdmin.FrmArticulo
 {
     public partial class OfertaArticulos : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
 
         private enum operations
         {
@@ -81,6 +86,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: loadSuspendedOffer " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -94,6 +101,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: llenarDropIniciales " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -121,6 +130,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: getDatosOferta " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
                 return null;
             }
@@ -148,6 +159,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: getDatosSuspendidos " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
                 return null;
             }
@@ -166,6 +179,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: verificarFechas " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
                 return result;
             }
@@ -179,6 +194,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: AddItemsToOffer " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -256,6 +273,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: cargarGridView " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -272,6 +291,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: findAndGetItems " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
                 return null;
             }
@@ -293,6 +314,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: actualizarSession " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -305,6 +328,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: addItems " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -364,6 +389,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: saveOffer " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\");", addScriptTags: true);
             }
         }
@@ -409,6 +436,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: btnRecoveryOffer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\");", addScriptTags: true);
             }
         }
@@ -433,6 +462,8 @@ namespace WebAppPOSAdmin.FrmArticulo
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: OfertaArticulo " + "Acción: btnPrinterLabels_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert(\"{message}\");", addScriptTags: true);
             }
         }
