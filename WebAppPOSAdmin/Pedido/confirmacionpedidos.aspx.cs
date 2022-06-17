@@ -14,11 +14,16 @@ using WebAppPOSAdmin.Repository.Infraestructura;
 using WebAppPOSAdmin.Repository.Repositorios;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Pedido
 {
     public partial class confirmacionpedidos : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!base.IsPostBack)
@@ -35,6 +40,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: cargaInicial " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -53,6 +60,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: cargarcampos " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -67,6 +76,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: cargarGridView " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -101,6 +112,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: recorrerGridActualizar " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -122,6 +135,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: actualizarDatosSession " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -135,6 +150,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: BindDataGrid " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -158,6 +175,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: calcularCostoCompra " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -174,6 +193,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: ddlPedido_SelectedIndexChanged " + ex.Message);
+                loggerdb.Error(ex);
                 ex.Message.Replace("'", " ").Replace("\n", " ").Replace("\r", " ");
             }
         }
@@ -190,6 +211,8 @@ namespace WebAppPOSAdmin.Pedido
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: btnAutorizar_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }
@@ -216,6 +239,8 @@ namespace WebAppPOSAdmin.Pedido
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: SaveOrder " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }
@@ -237,6 +262,8 @@ namespace WebAppPOSAdmin.Pedido
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: gvpedidoconfirmacion_RowEditing " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }
@@ -254,6 +281,8 @@ namespace WebAppPOSAdmin.Pedido
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: gvpedidoconfirmacion_RowUpdating " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }
@@ -267,6 +296,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: gvpedidoconfirmacion_RowCancelingEdit " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -280,6 +311,8 @@ namespace WebAppPOSAdmin.Pedido
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: btnCalcular_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }
@@ -371,6 +404,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: confirmacionpedidos " + "Acción: generarPDF " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
