@@ -8,11 +8,16 @@ using iTextSharp.text.pdf;
 
 using WebAppPOSAdmin.Repository.Entidad;
 using WebAppPOSAdmin.Repository.Clases;
+using NLog;
 
 namespace WebAppPOSAdmin.PdfReports
 {
     public partial class EstadisticaOferta : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -107,6 +112,8 @@ namespace WebAppPOSAdmin.PdfReports
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: EstadisticaOferta " + "Acción: createPDF " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
