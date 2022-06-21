@@ -47,7 +47,7 @@ namespace WebAppPOSAdmin.Principal
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Excepción Generada en: Login "+this.btnAcceder+" Acción " +ex.Message);
+                Log.Error(ex, "Excepción Generada en: Login " + "Acción: btnAcceder_Click " + ex.Message);
                 loggerdb.Error(ex);
                 CtrlException.SetError(ex.Message);
             }
