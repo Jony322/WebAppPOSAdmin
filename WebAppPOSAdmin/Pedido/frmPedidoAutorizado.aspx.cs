@@ -12,11 +12,17 @@ using iTextSharp.text.pdf;
 using WebAppPOSAdmin.Repository.Entidad;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Pedido
 {
     public partial class frmPedidoAutorizado : System.Web.UI.Page
     {
+
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
         private empleado acceso = new empleado();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -38,6 +44,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedidoAutorizado " + "Acción: cargaInicial " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -85,6 +93,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedidoAutorizado " + "Acción: loadOrders " + ex.Message);
+                loggerdb.Error(ex);
                 string arg = ex.Message.Replace("'", " ").Replace("\n", " ").Replace("\r", " ");
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{arg}');", addScriptTags: true);
             }
