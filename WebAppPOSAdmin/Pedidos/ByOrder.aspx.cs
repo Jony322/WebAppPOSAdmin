@@ -9,11 +9,16 @@ using WebAppPOSAdmin.Repository.Repositorios;
 using WebAppPOSAdmin.Repository.Scripts;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Pedidos
 {
     public partial class ByOrder : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!base.IsPostBack)
@@ -38,6 +43,8 @@ namespace WebAppPOSAdmin.Pedidos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: ByOrder " + "Acción: limpiarCampos " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -50,6 +57,8 @@ namespace WebAppPOSAdmin.Pedidos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: ByOrder " + "Acción: cargaInicial " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -67,6 +76,8 @@ namespace WebAppPOSAdmin.Pedidos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: ByOrder " + "Acción: validarFechas " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
                 return result;
             }
@@ -81,6 +92,8 @@ namespace WebAppPOSAdmin.Pedidos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: ByOrder " + "Acción: BindDataGrid " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -106,6 +119,8 @@ namespace WebAppPOSAdmin.Pedidos
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: ByOrder " + "Acción: btnVer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -197,6 +212,8 @@ namespace WebAppPOSAdmin.Pedidos
             catch (Exception ex)
             {
                 string message = ex.Message;
+                Log.Error(ex, "Excepción Generada en: ByOrder " + "Acción: btnGuardarFactura_Click " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{message}');", addScriptTags: true);
             }
         }
