@@ -108,6 +108,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedidoAutorizado " + "Acción: btnVer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -158,6 +160,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedidoAutorizado " + "Acción: btnExportarExcel_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -197,6 +201,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedidoAutorizado " + "Acción: gvOrders_RowCommand " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
@@ -291,6 +297,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedidoAutorizado " + "Acción: createPDF " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
