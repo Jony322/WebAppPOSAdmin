@@ -39,8 +39,7 @@ namespace WebAppPOSAdmin.Principal
                     session.Parametros["usuarioSession"] = empleado;
                     Session["usuarioSession"] = session;
                     Session["idEmpleado"] = session.IdUsuario;
-                    //Session["iva"] = new dcContextoSuPlazaDataContext().pos_admin_settings.FirstOrDefault().iva;
-                    Session.Timeout = 600;
+                    Session["iva"] = new dcContextoSuPlazaDataContext().pos_admin_settings.FirstOrDefault().iva;
                     base.Response.Cookies.Add(cookie);
                     base.Response.Redirect("/Default.aspx", endResponse: false);
                 }
