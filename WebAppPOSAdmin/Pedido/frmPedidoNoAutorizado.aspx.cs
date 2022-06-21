@@ -7,11 +7,17 @@ using WebAppPOSAdmin.Repository.Entidad;
 using WebAppPOSAdmin.Repository.Repositorios;
 
 using WebAppPOSAdmin.DropDownListExtender;
+using NLog;
 
 namespace WebAppPOSAdmin.Pedido
 {
     public partial class frmPedidoNoAutorizado : System.Web.UI.Page
     {
+        #region  logger
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!base.IsPostBack)
@@ -28,6 +34,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedidoNoAutorizado " + "Acción: cargaInicial " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -75,6 +83,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedidoNoAutorizado " + "Acción: loadOrders " + ex.Message);
+                loggerdb.Error(ex);
                 string arg = ex.Message.Replace("'", " ").Replace("\n", " ").Replace("\r", " ");
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{arg}');", addScriptTags: true);
             }
@@ -88,6 +98,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedidoNoAutorizado " + "Acción: btnVer_Click " + ex.Message);
+                loggerdb.Error(ex);
                 _ = ex.Message;
             }
         }
@@ -109,6 +121,8 @@ namespace WebAppPOSAdmin.Pedido
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Excepción Generada en: frmPedidoNoAutorizado " + "Acción: gvOrders_RowCommand " + ex.Message);
+                loggerdb.Error(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", $"alert('{ex.Message}');", addScriptTags: true);
             }
         }
